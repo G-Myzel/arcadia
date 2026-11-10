@@ -2,6 +2,10 @@ from datetime import date
 
 
 def registrar(partidas, maquinas):
+    if not maquinas:
+        print("Cadastre uma máquina antes de registrar partidas.")
+        return
+
     nome_jogador = input("Nome do jogador: ").strip()
     jogo = input("Nome do jogo: ").strip()
     if not nome_jogador or not jogo:
@@ -13,7 +17,7 @@ def registrar(partidas, maquinas):
         for indice, maquina in enumerate(maquinas, start=1)
         if maquina["ligada"] and maquina["jogo"].casefold() == jogo.casefold()
     ]
-    if maquinas and not elegiveis:
+    if not elegiveis:
         print("Não há máquina ligada com esse jogo.")
         return
 
